@@ -1,5 +1,5 @@
 namespace flybit{
-    //% block="Microbit Controller $buttonDecrease $buttonIncrease"
+    //% block="Microbit Controller $buttonA $buttonB"
     //% radius.defl=100
     //% radius.min=0 radius.max=1000
     export function controller(buttonA:Button, buttonB: Button) {
