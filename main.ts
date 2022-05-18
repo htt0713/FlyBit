@@ -4,7 +4,7 @@ namespace flybit{
     export function initialAnimation(animation: IconNames,time: number){
         basic.showIcon(animation, time)
     }
-    //% block="Microbit Controller Button Decrease $buttonA Button Increase $buttonB"
+    //% block="Microbit Manual Flying Controller | Button Decrease $buttonA Button Increase $buttonB |" 
     export function controller(buttonA:Button, buttonB: Button) {
         let b = 0
         let a = 0
