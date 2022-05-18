@@ -1,5 +1,6 @@
 namespace flybit{
-
+    let rxNumberPrev = 0
+    let rxNumberCurrent = 0
     //% block="Initialization Animation $animation Time: $time"
     export function initialAnimation(animation: IconNames,time: number){
         basic.showIcon(animation, time)
@@ -10,8 +11,7 @@ namespace flybit{
         let a = 0
         let pressedB = false
         let pressedA = false
-        let rxNumberPrev = 0
-        let rxNumberCurrent = 0
+       
         let ax = 0
         let ay = 0
         let buttonState = 0
@@ -43,6 +43,10 @@ namespace flybit{
             buf.setNumber(NumberFormat.Int16LE, 3, ay)
             radio.sendBuffer(buf)
         })
+    }
+
+     //% block="Plot Status IMPORTANT: Need to include!" 
+    export function returnStatus(){
         radio.onReceivedNumberDeprecated(function (receivedNumber) {
             if (receivedNumber == 1) {
                 basic.clearScreen()
@@ -59,6 +63,5 @@ namespace flybit{
             }
             rxNumberPrev = rxNumberCurrent
         })
-
     }
 }
