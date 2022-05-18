@@ -45,7 +45,7 @@ namespace flybit{
         })
     }
 
-     //% block="Plot Status IMPORTANT: Need to include!" 
+     //% block="LED Plot Status IMPORTANT: Need to include if flying manual!" 
     export function returnStatus(){
         radio.onReceivedNumberDeprecated(function (receivedNumber) {
             if (receivedNumber == 1) {
@@ -62,6 +62,78 @@ namespace flybit{
                 led.plotAll()
             }
             rxNumberPrev = rxNumberCurrent
+        })
+    }
+    //% block="Launch Feature Button: $launchButton" 
+    export function launch(launchButton: Button){
+        //disarm every time this function is called
+        let b = 0
+        let a = 0
+        let ax = 0
+        let ay = 0
+        let buttonState = 0
+        let axRx = 0
+        let ayRx = 0
+        let buf = pins.createBuffer(5)
+        buf.setNumber(NumberFormat.Int16LE, 0, buttonState)
+        buf.setNumber(NumberFormat.Int16LE, 1, ax)
+        buf.setNumber(NumberFormat.Int16LE, 3, ay)
+        radio.sendBuffer(buf)
+        //skip to 9
+        for(let i = 0; i<10;i++){
+            b = 1 //add in the state machine
+            buttonState = a + 2 * b
+            buf.setNumber(NumberFormat.Int16LE, 0, buttonState)
+            buf.setNumber(NumberFormat.Int16LE, 1, ax)
+            buf.setNumber(NumberFormat.Int16LE, 3, ay)
+            radio.sendBuffer(buf)
+            basic.pause(200)
+        }
+    }
+    //% block="Land Feature" 
+    export function land(){
+        //disarm every time this function is called
+        let b = 0
+        let a = 0
+        let ax = 0
+        let ay = 0
+        let buttonState = 0
+        let axRx = 0
+        let ayRx = 0
+        let buf = pins.createBuffer(5)
+        buf.setNumber(NumberFormat.Int16LE, 0, buttonState)
+        buf.setNumber(NumberFormat.Int16LE, 1, ax)
+        buf.setNumber(NumberFormat.Int16LE, 3, ay)
+        radio.sendBuffer(buf)
+        //skip to 9
+        for (let i = 0; i < 10; i++) {
+            a = 1 //decrease in the state machine
+            buttonState = a + 2 * b
+            buf.setNumber(NumberFormat.Int16LE, 0, buttonState)
+            buf.setNumber(NumberFormat.Int16LE, 1, ax)
+            buf.setNumber(NumberFormat.Int16LE, 3, ay)
+            radio.sendBuffer(buf)
+            basic.pause(200)
+        }
+    }
+
+    //% block="Direction | In tandem with Launch" 
+    export function launchFreeDirection() {
+        let ax = 0
+        let ay = 0
+        let buttonState = 0
+        let axRx = 0
+        let ayRx = 0
+        let buf = pins.createBuffer(5)
+        radio.setGroup(62)
+        basic.clearScreen()
+        basic.forever(function () {
+            ax = input.acceleration(Dimension.X) + 2020
+            ay = input.acceleration(Dimension.Y) + 2060
+            buf.setNumber(NumberFormat.Int16LE, 0, buttonState)
+            buf.setNumber(NumberFormat.Int16LE, 1, ax)
+            buf.setNumber(NumberFormat.Int16LE, 3, ay)
+            radio.sendBuffer(buf)
         })
     }
 }
