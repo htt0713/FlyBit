@@ -1,8 +1,8 @@
 namespace flybit{
-    //% block="Microbit Controller"
+    //% block="Microbit Controller $buttonDecrease $buttonIncrease"
     //% radius.defl=100
     //% radius.min=0 radius.max=1000
-    export function controller() {
+    export function controller(buttonA:Button, buttonB: Button) {
         let b = 0
         let a = 0
         let pressedB = false
@@ -22,8 +22,8 @@ namespace flybit{
         basic.forever(function () {
             ax = input.acceleration(Dimension.X) + 2020
             ay = input.acceleration(Dimension.Y) + 2060
-            pressedA = input.buttonIsPressed(Button.A)
-            pressedB = input.buttonIsPressed(Button.B)
+            pressedA = input.buttonIsPressed(buttonA)
+            pressedB = input.buttonIsPressed(buttonB)
             if (pressedA) {
                 a = 1
             } else {
