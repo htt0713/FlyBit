@@ -1,10 +1,14 @@
 namespace flybit{
     let rxNumberPrev = 0
     let rxNumberCurrent = 0
-    radio.setGroup(62)
-    basic.showIcon(IconNames.Happy, 2000)
-    basic.showIcon(IconNames.Chessboard, 2000)
-    basic.clearScreen()
+   
+    //% block="Set Radio | Group: $group"
+    export function startRadio(groupNumber: number) {
+        radio.setGroup(groupNumber)
+        basic.showIcon(IconNames.Happy, 2000)
+        basic.showIcon(IconNames.Chessboard, 2000)
+        basic.clearScreen()
+    }
     //% block="Initialization Animation $animation Time: $time"
     export function initialAnimation(animation: IconNames,time: number){
         basic.showIcon(animation, time)
