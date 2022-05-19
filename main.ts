@@ -1,4 +1,4 @@
-//% weight=100 color=#037c28 icon="\uf1d8 "
+//% weight=100 color=#037c28 icon="\uf1d8"
 namespace flybit{
     let rxNumberPrev = 0
     let rxNumberCurrent = 0
