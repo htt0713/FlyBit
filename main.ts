@@ -79,12 +79,10 @@ namespace flybit{
         let buttonState = 0
         let axRx = 0
         let ayRx = 0
-        let pressedA = false
-        let pressedB = false
+        let pressed = false
         let buf = pins.createBuffer(5)
-        pressedA = input.buttonIsPressed(launchButton)
-        pressedB = input.buttonIsPressed(launchButton)
-        if (pressedA || pressedB) {
+        pressed = input.buttonIsPressed(launchButton)
+        if (pressed) {
             buf.setNumber(NumberFormat.Int16LE, 0, buttonState)
             buf.setNumber(NumberFormat.Int16LE, 1, ax)
             buf.setNumber(NumberFormat.Int16LE, 3, ay)
@@ -100,7 +98,12 @@ namespace flybit{
                 basic.pause(200)
             }
         } else {
-            a = 0
+            buttonState = 0
+            buf.setNumber(NumberFormat.Int16LE, 0, buttonState)
+            buf.setNumber(NumberFormat.Int16LE, 1, ax)
+            buf.setNumber(NumberFormat.Int16LE, 3, ay)
+            radio.sendBuffer(buf)
+            basic.pause(200)
         }
     }
     //% block="Land Feature" 
