@@ -6,6 +6,7 @@ namespace flybit{
     //% block="Set Radio | Group: $groupNumber"
     export function startRadio(groupNumber: number) {
         radio.setGroup(groupNumber)
+        radio.setTransmitPower(7)
         basic.showIcon(IconNames.Happy, 2000)
         basic.showIcon(IconNames.Chessboard, 2000)
         basic.clearScreen()
