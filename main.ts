@@ -68,7 +68,7 @@ namespace flybit{
             rxNumberPrev = rxNumberCurrent
         })
     }
-    //% block="Launch Feature Button: $launchButton buttonA Land Feature  Button: $buttonB" 
+    //% block="Launch Feature Button: $buttonA Land Feature  Button: $buttonB" 
     export function launch(buttonA: Button, buttonB: Button){
         //disarm every time this function is called
 /*
