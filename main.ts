@@ -27,7 +27,7 @@ namespace flybit{
         let ayRx = 0
         let buf = pins.createBuffer(5)
         
-        basic.forever(function () {
+        
             ax = input.acceleration(Dimension.X) + 2020
             ay = input.acceleration(Dimension.Y) + 2060
             pressedA = input.buttonIsPressed(buttonA)
@@ -47,7 +47,6 @@ namespace flybit{
             buf.setNumber(NumberFormat.Int16LE, 1, ax)
             buf.setNumber(NumberFormat.Int16LE, 3, ay)
             radio.sendBuffer(buf)
-        })
     }
 
      //% block="LED Plot Status IMPORTANT: Need to include if flying manual!" 
