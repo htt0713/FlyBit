@@ -1,6 +1,10 @@
 namespace flybit{
     let rxNumberPrev = 0
     let rxNumberCurrent = 0
+    radio.setGroup(62)
+    basic.showIcon(IconNames.Happy, 2000)
+    basic.showIcon(IconNames.Chessboard, 2000)
+    basic.clearScreen()
     //% block="Initialization Animation $animation Time: $time"
     export function initialAnimation(animation: IconNames,time: number){
         basic.showIcon(animation, time)
@@ -18,10 +22,7 @@ namespace flybit{
         let axRx = 0
         let ayRx = 0
         let buf = pins.createBuffer(5)
-        radio.setGroup(62)
-        basic.showIcon(IconNames.Happy, 2000)
-        basic.showIcon(IconNames.Chessboard, 2000)
-        basic.clearScreen()
+        
         basic.forever(function () {
             ax = input.acceleration(Dimension.X) + 2020
             ay = input.acceleration(Dimension.Y) + 2060
