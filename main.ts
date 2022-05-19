@@ -95,6 +95,7 @@ namespace flybit{
                 buf.setNumber(NumberFormat.Int16LE, 1, ax)
                 buf.setNumber(NumberFormat.Int16LE, 3, ay)
                 radio.sendBuffer(buf)
+                basic.showNumber(i)
                 basic.pause(200)
             }
         } else {
