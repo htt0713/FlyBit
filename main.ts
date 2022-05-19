@@ -71,6 +71,7 @@ namespace flybit{
     //% block="Launch Feature Button: $launchButton" 
     export function launch(launchButton: Button){
         //disarm every time this function is called
+
         let b = 0
         let a = 0
         let ax = 0
@@ -78,20 +79,28 @@ namespace flybit{
         let buttonState = 0
         let axRx = 0
         let ayRx = 0
+        let pressedA = false
+        let pressedB = false
         let buf = pins.createBuffer(5)
-        buf.setNumber(NumberFormat.Int16LE, 0, buttonState)
-        buf.setNumber(NumberFormat.Int16LE, 1, ax)
-        buf.setNumber(NumberFormat.Int16LE, 3, ay)
-        radio.sendBuffer(buf)
-        //skip to 9
-        for(let i = 0; i<10;i++){
-            b = 1 //add in the state machine
-            buttonState = a + 2 * b
+        pressedA = input.buttonIsPressed(launchButton)
+        pressedB = input.buttonIsPressed(launchButton)
+        if (pressedA || pressedB) {
             buf.setNumber(NumberFormat.Int16LE, 0, buttonState)
             buf.setNumber(NumberFormat.Int16LE, 1, ax)
             buf.setNumber(NumberFormat.Int16LE, 3, ay)
             radio.sendBuffer(buf)
-            basic.pause(200)
+            //skip to 9
+            for (let i = 0; i < 10; i++) {
+                b = 1 //add in the state machine
+                buttonState = a + 2 * b
+                buf.setNumber(NumberFormat.Int16LE, 0, buttonState)
+                buf.setNumber(NumberFormat.Int16LE, 1, ax)
+                buf.setNumber(NumberFormat.Int16LE, 3, ay)
+                radio.sendBuffer(buf)
+                basic.pause(200)
+            }
+        } else {
+            a = 0
         }
     }
     //% block="Land Feature" 
