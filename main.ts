@@ -2,7 +2,7 @@ namespace flybit{
     let rxNumberPrev = 0
     let rxNumberCurrent = 0
    
-    //% block="Set Radio | Group: $group"
+    //% block="Set Radio | Group: $groupNumber"
     export function startRadio(groupNumber: number) {
         radio.setGroup(groupNumber)
         basic.showIcon(IconNames.Happy, 2000)
