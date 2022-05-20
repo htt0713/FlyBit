@@ -170,6 +170,47 @@ namespace flybit{
         buf.setNumber(NumberFormat.Int16LE, 3, ay)
         radio.sendBuffer(buf)
     }
+    //%block="launchBlock"
+    export function launchBlock(){
+        let b = 0
+        let a = 0
+        let pressedB = false
+        let pressedA = false
+
+        let ax = 0
+        let ay = 0
+        let buttonState = 0
+        let axRx = 0
+        let ayRx = 0
+        let buf = pins.createBuffer(5)
+
+
+        ax = input.acceleration(Dimension.X) + 2020
+        ay = input.acceleration(Dimension.Y) + 2060
+        buttonState = 2
+        buf.setNumber(NumberFormat.Int16LE, 0, buttonState)
+        buf.setNumber(NumberFormat.Int16LE, 1, ax)
+        buf.setNumber(NumberFormat.Int16LE, 3, ay)
+        radio.sendBuffer(buf)
+
+        radio.onReceivedNumberDeprecated(function (receivedNumber) {
+            if (receivedNumber == 1) {
+                basic.clearScreen()
+            }
+            rxNumberCurrent = receivedNumber
+            led.plot(receivedNumber % 5, receivedNumber / 5)
+
+            if (rxNumberCurrent < rxNumberPrev) {
+                led.unplot((receivedNumber + 1) % 5, (receivedNumber + 1) / 5)
+            }
+            if (receivedNumber == 0) {
+                basic.clearScreen()
+                led.plotAll()
+            }
+            rxNumberPrev = rxNumberCurrent
+        })
+    }
+
 
     //%block="launchTest | Button Decrease $buttonA Button Increase $buttonB |"
     export function launchTest(buttonA: Button, buttonB: Button){
@@ -199,14 +240,6 @@ namespace flybit{
             b = 1
         } else {
             b = 0
-        }
-
-        for(let i=0;i<10;i++){
-            basic.showNumber(i)
-            basic.pause(200)
-            if(i==9){
-                break
-            }
         }
             buttonState = a + 2 * b
             buf.setNumber(NumberFormat.Int16LE, 0, buttonState)
