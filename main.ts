@@ -172,16 +172,9 @@ namespace flybit{
     }
     //%block="launchBlock"
     export function launchBlock(){
-        let b = 0
-        let a = 0
-        let pressedB = false
-        let pressedA = false
-
         let ax = 0
         let ay = 0
-        let buttonState = 0
-        let axRx = 0
-        let ayRx = 0
+        let buttonState = 2
         let buf = pins.createBuffer(5)
 
 
