@@ -192,24 +192,6 @@ namespace flybit{
             buf.setNumber(NumberFormat.Int16LE, 3, ay)
             radio.sendBuffer(buf)
         }
-       
-
-        radio.onReceivedNumberDeprecated(function (receivedNumber) {
-            if (receivedNumber == 1) {
-                basic.clearScreen()
-            }
-            rxNumberCurrent = receivedNumber
-            led.plot(receivedNumber % 5, receivedNumber / 5)
-
-            if (rxNumberCurrent < rxNumberPrev) {
-                led.unplot((receivedNumber + 1) % 5, (receivedNumber + 1) / 5)
-            }
-            if (receivedNumber == 0) {
-                basic.clearScreen()
-                led.plotAll()
-            }
-            rxNumberPrev = rxNumberCurrent
-        })
     }
 
 
