@@ -145,8 +145,8 @@ namespace flybit{
         pressedB = input.buttonIsPressed(buttonB)
         if (pressedA) {
             for (let i = 0; i < 10; i++) {
-                b = 1 //add in the state machine
-                buttonState = a + 2 * b
+                //b = 1 //add in the state machine
+                buttonState = 2
                 buf.setNumber(NumberFormat.Int16LE, 0, buttonState)
                 buf.setNumber(NumberFormat.Int16LE, 1, ax)
                 buf.setNumber(NumberFormat.Int16LE, 3, ay)
