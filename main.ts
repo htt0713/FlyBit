@@ -225,7 +225,7 @@ namespace flybit{
         let buf = pins.createBuffer(5)
         radio.setGroup(62)
         basic.clearScreen()
-        basic.forever(function () {
+        
             ax = input.acceleration(Dimension.X) + 2020
             ay = input.acceleration(Dimension.Y) + 2060
             buf.setNumber(NumberFormat.Int16LE, 0, buttonState)
@@ -233,6 +233,6 @@ namespace flybit{
             buf.setNumber(NumberFormat.Int16LE, 3, ay)
             radio.sendBuffer(buf)
             //need to think of break condition
-        })
+        
     }
 }
