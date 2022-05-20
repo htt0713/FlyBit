@@ -177,8 +177,10 @@ namespace flybit{
         let buttonState = 2
         let buf = pins.createBuffer(5)
 
-            ax = input.acceleration(Dimension.X) + 2020
-            ay = input.acceleration(Dimension.Y) + 2060
+        //ax = input.acceleration(Dimension.X) + 2020
+        //ay = input.acceleration(Dimension.Y) + 2060
+        ax = 0
+        ay = 0
             buttonState = 2
             buf.setNumber(NumberFormat.Int16LE, 0, buttonState)
             buf.setNumber(NumberFormat.Int16LE, 1, ax)
