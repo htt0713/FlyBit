@@ -147,6 +147,8 @@ namespace flybit{
             for (let i = 0; i < 10; i++) {
                 //b = 1 //add in the state machine
                 buttonState = 2
+                ax = 0
+                ay = 0
                 buf.setNumber(NumberFormat.Int16LE, 0, buttonState)
                 buf.setNumber(NumberFormat.Int16LE, 1, ax)
                 buf.setNumber(NumberFormat.Int16LE, 3, ay)
