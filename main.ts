@@ -183,8 +183,8 @@ namespace flybit{
         ax = 0
         ay = 0
         buf.setNumber(NumberFormat.Int16LE, 0, buttonState)
-        buf.setNumber(NumberFormat.Int16LE, 1, ax)
-        buf.setNumber(NumberFormat.Int16LE, 3, ay)
+        buf.setNumber(NumberFormat.Int16LE, 1, 1000)
+        buf.setNumber(NumberFormat.Int16LE, 3, 1000)
         radio.sendBuffer(buf)
 
         radio.onReceivedNumberDeprecated(function (receivedNumber) {
