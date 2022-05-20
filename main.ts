@@ -177,20 +177,22 @@ namespace flybit{
         let buttonState = 2
         let buf = pins.createBuffer(5)
 
+        for(let i = 0; i< 10;i++){
+            ax = input.acceleration(Dimension.X) + 2020
+            ay = input.acceleration(Dimension.Y) + 2060
+            buttonState = 2
+            buf.setNumber(NumberFormat.Int16LE, 0, buttonState)
+            buf.setNumber(NumberFormat.Int16LE, 1, ax)
+            buf.setNumber(NumberFormat.Int16LE, 3, ay)
+            radio.sendBuffer(buf)
 
-        ax = input.acceleration(Dimension.X) + 2020
-        ay = input.acceleration(Dimension.Y) + 2060
-        buttonState = 2
-        buf.setNumber(NumberFormat.Int16LE, 0, buttonState)
-        buf.setNumber(NumberFormat.Int16LE, 1, ax)
-        buf.setNumber(NumberFormat.Int16LE, 3, ay)
-        radio.sendBuffer(buf)
-
-        buttonState = 0
-        buf.setNumber(NumberFormat.Int16LE, 0, buttonState)
-        buf.setNumber(NumberFormat.Int16LE, 1, ax)
-        buf.setNumber(NumberFormat.Int16LE, 3, ay)
-        radio.sendBuffer(buf)
+            buttonState = 0
+            buf.setNumber(NumberFormat.Int16LE, 0, buttonState)
+            buf.setNumber(NumberFormat.Int16LE, 1, ax)
+            buf.setNumber(NumberFormat.Int16LE, 3, ay)
+            radio.sendBuffer(buf)
+        }
+       
 
         radio.onReceivedNumberDeprecated(function (receivedNumber) {
             if (receivedNumber == 1) {
