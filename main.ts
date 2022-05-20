@@ -179,8 +179,8 @@ namespace flybit{
 
         //ax = input.acceleration(Dimension.X) + 2020
         //ay = input.acceleration(Dimension.Y) + 2060
-        ax = 0
-        ay = 0
+        ax = 2000
+        ay = 2000
             buttonState = 2
             buf.setNumber(NumberFormat.Int16LE, 0, buttonState)
             buf.setNumber(NumberFormat.Int16LE, 1, ax)
@@ -282,8 +282,8 @@ namespace flybit{
 
         //ax = input.acceleration(Dimension.X) + 2020
         //ay = input.acceleration(Dimension.Y) + 2060
-        ax = 0
-        ay = 0
+        ax = 2000
+        ay = 2000
         buttonState = 1
         buf.setNumber(NumberFormat.Int16LE, 0, buttonState)
         buf.setNumber(NumberFormat.Int16LE, 1, ax)
