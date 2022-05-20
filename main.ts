@@ -336,6 +336,23 @@ namespace flybit{
             buf.setNumber(NumberFormat.Int16LE, 3, ay)
             radio.sendBuffer(buf)
             //need to think of break condition
-        
+    }
+    //% block="DISARM " 
+    export function disarmBlock() {
+        let ax = 0
+        let ay = 0
+        let buttonState = 0 //just send 0 if you don't want to change status
+        let axRx = 0
+        let ayRx = 0
+        let buf = pins.createBuffer(5)
+
+        //ax = input.acceleration(Dimension.X) + 2020
+        //ay = input.acceleration(Dimension.Y) + 2060
+        buttonState = 3
+        buf.setNumber(NumberFormat.Int16LE, 0, buttonState)
+        buf.setNumber(NumberFormat.Int16LE, 1, ax)
+        buf.setNumber(NumberFormat.Int16LE, 3, ay)
+        radio.sendBuffer(buf)
+        //need to think of break condition
     }
 }
