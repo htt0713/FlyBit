@@ -204,6 +204,7 @@ namespace flybit{
         for(let i=0;i<10;i++){
             basic.showNumber(i)
             basic.pause(200)
+            break
         }
             buttonState = a + 2 * b
             buf.setNumber(NumberFormat.Int16LE, 0, buttonState)
