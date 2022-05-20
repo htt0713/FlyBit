@@ -229,8 +229,10 @@ namespace flybit{
         let buf = pins.createBuffer(5)
 
 
-        ax = input.acceleration(Dimension.X) + 2020
-        ay = input.acceleration(Dimension.Y) + 2060
+        //ax = input.acceleration(Dimension.X) + 2020
+        //ay = input.acceleration(Dimension.Y) + 2060
+        ax = 0
+        ay = 0
         pressedA = input.buttonIsPressed(buttonA)
         pressedB = input.buttonIsPressed(buttonB)
         if (pressedA) {
@@ -269,15 +271,17 @@ namespace flybit{
         
     }
 
-    //% block="Land Feature" 
+    //% block="landBlock" 
     export function land(){
         let ax = 0
         let ay = 0
         let buttonState = 2
         let buf = pins.createBuffer(5)
 
-        ax = input.acceleration(Dimension.X) + 2020
-        ay = input.acceleration(Dimension.Y) + 2060
+        //ax = input.acceleration(Dimension.X) + 2020
+        //ay = input.acceleration(Dimension.Y) + 2060
+        ax = 0
+        ay = 0
         buttonState = 1
         buf.setNumber(NumberFormat.Int16LE, 0, buttonState)
         buf.setNumber(NumberFormat.Int16LE, 1, ax)
