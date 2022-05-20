@@ -201,7 +201,10 @@ namespace flybit{
             b = 0
         }
 
-        for(let i = 0;i<10;i++){
+        for(let i=0;i<10;i++){
+            basic.showNumber(i)
+            basic.pause(200)
+        }
             buttonState = a + 2 * b
             buf.setNumber(NumberFormat.Int16LE, 0, buttonState)
             buf.setNumber(NumberFormat.Int16LE, 1, ax)
@@ -224,7 +227,7 @@ namespace flybit{
                 }
                 rxNumberPrev = rxNumberCurrent
             })
-        }
+        
         
     }
 
@@ -263,8 +266,8 @@ namespace flybit{
         let axRx = 0
         let ayRx = 0
         let buf = pins.createBuffer(5)
-        radio.setGroup(62)
-        basic.clearScreen()
+        //radio.setGroup(62)
+        //basic.clearScreen()
         
             ax = input.acceleration(Dimension.X) + 2020
             ay = input.acceleration(Dimension.Y) + 2060
