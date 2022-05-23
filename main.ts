@@ -208,7 +208,7 @@ namespace flybit{
             }
             if (receivedNumber == 0) {
                 basic.clearScreen()
-                led.plotAll()
+                //led.plotAll()
             }
             rxNumberPrev = rxNumberCurrent
         })
