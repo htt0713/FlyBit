@@ -36,11 +36,11 @@ namespace flybit{
         else if(yaw >= 700){
             yaw = 1600
         }
-        else if(yaw >100 && yaw <= 400){
+        else if(yaw <= 300){
             yaw = 1400
         }
         else{
-            yaw = 400
+            yaw = 1500
         }
             ax = input.acceleration(Dimension.X) + 2020
             ay = input.acceleration(Dimension.Y) + 2060
