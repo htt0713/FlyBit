@@ -27,9 +27,21 @@ namespace flybit{
         let buttonState = 0
         let axRx = 0
         let ayRx = 0
-        let buf = pins.createBuffer(5)
-        
-        
+        let buf = pins.createBuffer(7)
+
+        let yaw = pins.analogReadPin(AnalogPin.P0)
+        if (yaw > 400 && yaw < 700){
+            yaw = 1500
+        }
+        else if(yaw >= 700){
+            yaw = 1600
+        }
+        else if(yaw <= 400){
+            yaw = 1400
+        }
+        else{
+            yaw = 400
+        }
             ax = input.acceleration(Dimension.X) + 2020
             ay = input.acceleration(Dimension.Y) + 2060
             pressedA = input.buttonIsPressed(buttonA)
@@ -44,10 +56,12 @@ namespace flybit{
             } else {
                 b = 0
             }
+
             buttonState = a + 2 * b
             buf.setNumber(NumberFormat.Int16LE, 0, buttonState)
             buf.setNumber(NumberFormat.Int16LE, 1, ax)
             buf.setNumber(NumberFormat.Int16LE, 3, ay)
+            buf.setNumber(NumberFormat.Int16LE, 5, yaw)
             radio.sendBuffer(buf)
 
             radio.onReceivedNumberDeprecated(function (receivedNumber) {
