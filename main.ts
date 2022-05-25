@@ -36,7 +36,7 @@ namespace flybit{
         else if(yaw >= 700){
             yaw = 1600
         }
-        else if(yaw <= 400){
+        else if(yaw >100 && yaw <= 400){
             yaw = 1400
         }
         else{
