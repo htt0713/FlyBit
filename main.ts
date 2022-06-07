@@ -42,8 +42,8 @@ namespace flybit{
         else{
             yaw = 1500
         }
-            ax = input.acceleration(Dimension.X) + 2020
-            ay = input.acceleration(Dimension.Y) + 2060
+            ax = input.acceleration(Dimension.X) + 2040
+            ay = input.acceleration(Dimension.Y) + 2040
             pressedA = input.buttonIsPressed(buttonA)
             pressedB = input.buttonIsPressed(buttonB)
             if (pressedA) {
