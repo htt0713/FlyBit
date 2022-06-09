@@ -29,19 +29,21 @@ namespace flybit{
         let ayRx = 0
         let buf = pins.createBuffer(7)
 
-        let yaw = pins.analogReadPin(AnalogPin.P0)
-        if (yaw > 400 && yaw < 700){
-            yaw = 1500
-        }
-        else if(yaw >= 700){
-            yaw = 1600
-        }
-        else if(yaw <= 300){
-            yaw = 1400
-        }
-        else{
-            yaw = 1500
-        }
+        // let yaw = pins.analogReadPin(AnalogPin.P0)
+        // if (yaw > 400 && yaw < 700){
+        //     yaw = 1500
+        // }
+        // else if(yaw >= 700){
+        //     yaw = 1600
+        // }
+        // else if(yaw <= 300){
+        //     yaw = 1400
+        // }
+        // else{
+        //     yaw = 1500
+        //}
+        let yaw = 1500
+        
             ax = input.acceleration(Dimension.X) + 2040
             ay = input.acceleration(Dimension.Y) + 2040
             pressedA = input.buttonIsPressed(buttonA)
